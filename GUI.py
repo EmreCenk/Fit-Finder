@@ -1,4 +1,7 @@
 
+
+
+
 import tkinter as tk
 from gradient import GradientFrame
 
@@ -125,7 +128,7 @@ class page_displayer:
 
         self.click_anywhere()
         self.root.bind("<Button-1>", self.mouse_clicked)
-
+    
 from gradient import GradientFrame
 self=page_displayer()
 self.welcome_screen()
