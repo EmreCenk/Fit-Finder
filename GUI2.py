@@ -2,14 +2,16 @@ import tkinter as tk
 from gradient import GradientFrame
 
 font_name="Segoe UI"
+font_style = "semibold"
+
 class page_displayer:
 
     def __init__(self):
         global font_name
         # self.BACKGROUND_COLOR = "#add8e6" #The background color
-        self.HEIGHT = 500 #This is the initial window size, everything will be resized if you change the size of the
+        self.HEIGHT = 1080 #This is the initial window size, everything will be resized if you change the size of the
         # window
-        self.WIDTH = 800
+        self.WIDTH = 1920
 
         self.root = tk.Tk()  # Initializing root
         self.root.title("Something")  # setting window title name
@@ -96,8 +98,8 @@ class page_displayer:
 
     def welcome_screen(self,):
         self.screen_index+=1
-        self.create_proper_text(0.5,0.5,"Welcome to Fit Finder","white",(font_name,25))
-        self.create_proper_text(0.5,0.4,"Hello.","White",(font_name,25))
+        self.create_proper_text(0.5,0.5,"Welcome to Fit Finder","white", (font_name, 50))
+        self.create_proper_text(0.5,0.4,"Hello", "white", (font_name, 100))
         self.click_anywhere()
         self.root.bind("<Button-1>", self.mouse_clicked)
 
