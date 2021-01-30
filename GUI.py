@@ -41,7 +41,7 @@ class page_displayer:
 
         self.screen_index=0
         self.screen_order = [self.welcome_screen,
-                        self.question1,self.question2,self.question3]
+                        self.question1,self.question2,self.question3,self.question4,self.question5,self.question6]
 
         # pad = 3
         # self._geom = '200x200+0+0'
@@ -152,11 +152,59 @@ class page_displayer:
 
         self.click_anywhere()
         self.screen_index=4
+    def question4(self):
+        self.clear_page()
+        self.clear_text()
+        alpha=self.create_proper_text(relx=0.5,rely=0.35,
+                                text="  What is your weight in kg?",
+                                fill="White",font_tuple=(font_name,80))
 
+        self.entry = tk.Entry(None,  # Since this will be the child of the frame
+
+                              font=(font_name,20),  # helvetica is the font, 60 is the font size
+                              )
+        self.entry.place(anchor="w", relx=0.2, rely=0.6, relheight=0.1, relwidth=0.15)  # Input field
+
+        self.click_anywhere()
+        self.screen_index=5
+    def question5(self):
+
+        self.clear_page()
+        self.clear_text()
+        alpha=self.create_proper_text(relx=0.5,rely=0.35,
+                                text="  What is your goal?",
+                                fill="White",font_tuple=(font_name,80))
+
+        self.q4info=tk.StringVar()
+
+        self.entry = tk.OptionMenu(None,self.q4info,"Lose Weight","Maintain Fitness","Gain Weight",
+                              )
+        self.entry.config(font=(font_name,20),background="orange",bd=0,highlightbackground="orange")
+        self.entry.place(anchor="w", relx=0.2, rely=0.6, relheight=0.1, relwidth=0.18)  # Input field
+
+        self.click_anywhere()
+        self.screen_index=6
+
+    def question6(self):
+        self.clear_page()
+        self.clear_text()
+        alpha=self.create_proper_text(relx=0.5,rely=0.35,
+                                text="Do you prefer a certain diet?",
+                                fill="White",font_tuple=(font_name,80))
+
+        self.q5info=tk.StringVar()
+        self.entry = tk.OptionMenu(None,self.q5info,"Halal","Vegetarian","Vegan","No Restricions",
+
+                              )
+        self.entry.config(font=(font_name,20),background="orange",bd=0,highlightbackground="orange")
+        self.entry.place(anchor="w", relx=0.2, rely=0.6, relheight=0.1, relwidth=0.18)  # Input field
+
+        self.click_anywhere()
+        self.screen_index=7
     def mouse_clicked(self,even_object):
 
-        self.main_frame.itemconfig(self.click_text, text="  Please enter an integer\nClick anywhere to continue")
-        if self.screen_index in [3,4]:
+        if self.screen_index in [3,4,5]:
+            self.main_frame.itemconfig(self.click_text, text="  Please enter an integer\nClick anywhere to continue")
 
             potential_age=self.entry.get()
             if potential_age=="":
@@ -170,7 +218,15 @@ class page_displayer:
                 pass
 
             print(potential_age)
+        elif self.screen_index==6:
+            pote=self.q4info.get()
+            if pote in ["Lose Weight","Maintain Fitness","Gain Weight"]:
+                self.screen_order[self.screen_index]()
 
+        elif self.screen_index==7:
+            pote=self.q5info.get()
+            if pote in ["Halal","Vegetarian","Vegan","No Restricions"]:
+                shouldi=True
         else:
             try:
                 self.screen_order[self.screen_index]()
@@ -188,6 +244,4 @@ class page_displayer:
 from gradient import GradientFrame
 self=page_displayer()
 self.welcome_screen()
-
-
 self.screen.mainloop()
