@@ -1,33 +1,30 @@
-
 import tkinter as tk
 from gradient import GradientFrame
 
-font_name="Segoe UI"
+font_name="Segoe UI Semibold"
+
 class page_displayer:
 
     def __init__(self):
         global font_name
-        self._geom="100x100"
         # self.BACKGROUND_COLOR = "#add8e6" #The background color
+        self.HEIGHT = 1080 #This is the initial window size, everything will be resized if you change the size of the
+        # window
+        self.WIDTH = 1920
 
         self.root = tk.Tk()  # Initializing root
-        self.root.attributes("-fullscreen", True)  # substitute `Tk` for whatever your `Tk()` object is called
-
         self.root.title("Something")  # setting window title name
         width = self.root.winfo_screenwidth()
         height = self.root.winfo_screenheight()
-
-        self.root.bind('<Escape>',self.toggle_geom)
+        self.root.geometry(f'{width}x{height}')
         #initializing background:
-        self.HEIGHT = height #This is the initial window size, everything will be resized if you change the size of the
-        # window
-        self.WIDTH = width
+
 
         self.screen = tk.Canvas(self.root, width=self.WIDTH, height=self.HEIGHT)
         self.screen.pack()
 
 
-        self.main_frame = GradientFrame(self.root, from_color="#000000", to_color="#E74C3C", height=1000)
+        self.main_frame = GradientFrame(self.root, from_color= "#088BFE", to_color= "#058F06", height=1000)
 
         # Placing the background:
         self.main_frame.place(relx=0.5, rely=0, relwidth=1, relheight=1, anchor="n")
@@ -42,18 +39,6 @@ class page_displayer:
         self.screen_index=0
         self.screen_order = [self.welcome_screen,
                         self.question1]
-        pad = 3
-        self._geom = '200x200+0+0'
-        self.root.geometry("{0}x{1}+0+0".format(
-            self.root.winfo_screenwidth() - pad, self.root.winfo_screenheight() - pad))
-        self.root.bind('<Escape>', self.toggle_geom)
-
-    def toggle_geom(self, event):
-        #Does not work lol
-        geom = self.root.winfo_geometry()
-
-        self.root.format((self._geom))
-        self._geom = geom
 
     def clear_text(self):
         for text in self.list_of_text_objects:
@@ -61,7 +46,6 @@ class page_displayer:
         self.list_of_text_objects=[]
 
     def create_proper_text(self,relx,rely,text,fill,font_tuple):
-        print(self.WIDTH,self.HEIGHT)
         x=relx*self.WIDTH
         y=rely*self.HEIGHT
         params=[x,y,text,fill,font_tuple]
@@ -102,27 +86,21 @@ class page_displayer:
 
         self.list_of_objects = []  # Just to make sure everything is fully wiped from memory
 
-    def click_anywhere(self,size=20):
-        self.create_proper_text(0.5,0.8,"Click anywhere to continue","white",(font_name,size))
+    def click_anywhere(self):
+        self.create_proper_text(0.5,0.9,"Click anywhere to continue","white", (font_name,20))
 
     def question1(self):
         self.clear_page()
         self.clear_text()
-        self.create_proper_text(relx=0.3,rely=0.35,
-                                text="First, let's get to know you.",
-                                fill="White",font_tuple=(font_name,40))
-
-
-        self.click_anywhere()
+        self.create_proper_text(relx=0.5,rely=0.5,text="OK",fill="White", font_tuple=(font_name,45))
     def mouse_clicked(self,even_object):
         self.screen_order[self.screen_index]()
 
 
     def welcome_screen(self,):
         self.screen_index+=1
-        self.create_proper_text(0.5,0.5,"Welcome to Fit Finder","white",(font_name,25))
-        self.create_proper_text(0.5,0.4,"Hello.","White",(font_name,25))
-
+        self.create_proper_text(0.5,0.52,"Welcome to Fit Finder", "white", (font_name, 50))
+        self.create_proper_text(0.5,0.42,"Hello", "white", (font_name, 100))
         self.click_anywhere()
         self.root.bind("<Button-1>", self.mouse_clicked)
 
