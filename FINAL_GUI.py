@@ -9,8 +9,7 @@ class page_displayer:
     def __init__(self):
         global font_name
         # self.BACKGROUND_COLOR = "#add8e6" #The background color
-        self.HEIGHT = 1080 #This is the initial window size, everything will be resized if you change the size of the
-        # window
+        self.HEIGHT = 1080
         self.WIDTH = 1920
 
         self.root = tk.Tk()  # Initializing root
