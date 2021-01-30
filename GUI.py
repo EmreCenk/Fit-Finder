@@ -27,7 +27,7 @@ class page_displayer:
         self.screen.pack()
 
 
-        self.main_frame = GradientFrame(self.root, from_color="#000000", to_color="#E74C3C", height=1000)
+        self.main_frame = GradientFrame(self.root, from_color="#088BFE",to_color="#058F06", height=1000)
         self.information={}
         # Placing the background:
         self.main_frame.place(relx=0.5, rely=0, relwidth=1, relheight=1, anchor="n")
@@ -41,7 +41,8 @@ class page_displayer:
 
         self.screen_index=0
         self.screen_order = [self.welcome_screen,
-                        self.question1,self.question2,self.question3,self.question4,self.question5,self.question6]
+                        self.question1,self.question2,self.question3,self.question4,self.question5,self.question6,
+                             self.question7]
 
         # pad = 3
         # self._geom = '200x200+0+0'
@@ -120,7 +121,7 @@ class page_displayer:
 
         self.click_anywhere()
     def question2(self):
-
+        #new=self.redifine_main()
         self.clear_page()
         self.clear_text()
         alpha=self.create_proper_text(relx=0.3,rely=0.35,
@@ -201,6 +202,23 @@ class page_displayer:
 
         self.click_anywhere()
         self.screen_index=7
+
+    def question7(self):
+        self.clear_page()
+        self.clear_text()
+        self.create_proper_text(relx=0.5, rely=0.35,
+                                        text="What is your gender?",
+                                        fill="White", font_tuple=(font_name, 80))
+
+        self.q7info = tk.StringVar()
+        self.entry = tk.OptionMenu(None, self.q7info, "Male", "Female", "Other","Prefer Not To Say"
+
+                                   )
+        self.entry.config(font=(font_name, 20), background="orange", bd=0, highlightbackground="orange")
+        self.entry.place(anchor="w", relx=0.2, rely=0.6, relheight=0.1, relwidth=0.18)  # Input field
+
+        self.click_anywhere()
+        self.screen_index = 8
     def mouse_clicked(self,even_object):
 
         if self.screen_index in [3,4,5]:
@@ -226,15 +244,26 @@ class page_displayer:
         elif self.screen_index==7:
             pote=self.q5info.get()
             if pote in ["Halal","Vegetarian","Vegan","No Restricions"]:
-                shouldi=True
+                self.screen_order[self.screen_index]()
+
+        elif self.screen_index==8:
+            pote=self.q7info.get()
+            if pote in ["Male","Female","Other"]:
+                self.screen_order[self.screen_index]()
         else:
             try:
                 self.screen_order[self.screen_index]()
             except:
                 pass
 
-
+    def redifine_main(self,cfrom="#088BFE",cto="#058F06"):
+        self.clear_page()
+        self.clear_text()
+        self.main_frame.destroy()
+        self.main_frame = GradientFrame(self.root, from_color=cfrom, to_color=cto, height=1000)
+        return self.main_frame
     def welcome_screen(self,):
+        self.main_frame = GradientFrame(self.root, from_color="#000000", to_color="#E74C3C", height=1000)
         self.screen_index=1
         self.create_proper_text(0.5,0.5,"Welcome to Fit Finder","white",(font_name,25))
         self.create_proper_text(0.5,0.4,"Hello.","White",(font_name,25))
@@ -243,5 +272,6 @@ class page_displayer:
 
 from gradient import GradientFrame
 self=page_displayer()
-self.welcome_screen()
+
+self.question2()
 self.screen.mainloop()
