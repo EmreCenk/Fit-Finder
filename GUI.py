@@ -24,7 +24,7 @@ class page_displayer:
         self.screen.pack()
 
 
-        self.main_frame = GradientFrame(self.root, from_color="#000000", to_color="#E74C3C", height=1000)
+        self.main_frame = GradientFrame(self.root, from_color= "#088BFE", to_color= "#058F06", height=1000)
 
         # Placing the background:
         self.main_frame.place(relx=0.5, rely=0, relwidth=1, relheight=1, anchor="n")
