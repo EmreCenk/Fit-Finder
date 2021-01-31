@@ -107,7 +107,7 @@ class GradientFrame(Canvas):
 #     screen=tk.Canvas(root,width=width,height=height)
 # 
 #     # GradientFrame(root, from_color="#000000", to_color="#E74C3C", height=1000).pack(fill=X)
-#     screen.create_text(100,10,fill="darkblue",font="Times 20 italic bold",text="Click the bubbles that are multiples of "
+#     screen.create_text(100,10,fill="darkblue",font="Times 20 italic bold",text="alpha_alpha "
 #                                                                           "two.")
 #     root.mainloop()
 
