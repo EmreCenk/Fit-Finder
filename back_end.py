@@ -1,6 +1,4 @@
-def main():
-    bmi_intro()
-    
+
 
 #Variables
 get_height = 0.0
@@ -29,4 +27,3 @@ def main():
     else:
         print("A person with a BMI of " + str(body_mass_index ) + " is overweight ")
 
-main()
