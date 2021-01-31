@@ -1,11 +1,6 @@
-# Original Author: Miguel Martinez Lopez
 
-try:
-    from Tkinter import Canvas
-    from Tkconstants import *
-except ImportError:
-    from tkinter import Canvas
-    from tkinter.constants import *
+from tkinter import Canvas
+from tkinter.constants import *
 
 from PIL import Image, ImageDraw, ImageTk
 
