@@ -2,7 +2,7 @@
 import tkinter as tk
 from gradient import GradientFrame
 
-font_name="Segoe UI"
+font_name="Segoe UI semibold"
 class page_displayer:
 
     def __init__(self):
@@ -27,7 +27,7 @@ class page_displayer:
         self.screen.pack()
 
 
-        self.main_frame = GradientFrame(self.root, from_color="#088BFE",to_color="#058F06", height=1000)
+        self.main_frame = GradientFrame(self.root, from_color="#088BFE", to_color="#058F06", height=1000)
         self.information={}
         # Placing the background:
         self.main_frame.place(relx=0.5, rely=0, relwidth=1, relheight=1, anchor="n")
@@ -114,25 +114,25 @@ class page_displayer:
         self.screen_index=2
         self.clear_page()
         self.clear_text()
-        self.create_proper_text(relx=0.3,rely=0.35,
+        self.create_proper_text(relx=0.5,rely=0.35,
                                 text="First, let's get to know you.",
                                 fill="White",font_tuple=(font_name,40))
 
 
         self.click_anywhere()
     def question2(self):
-        #new=self.redifine_main()
+
         self.clear_page()
         self.clear_text()
-        alpha=self.create_proper_text(relx=0.3,rely=0.35,
-                                text="  How old are you?",
+        alpha=self.create_proper_text(relx=0.5,rely=0.35,
+                                text="How old are you?",
                                 fill="White",font_tuple=(font_name,80))
 
         self.entry = tk.Entry(None,  # Since this will be the child of the frame
 
                               font=(font_name,20),  # helvetica is the font, 60 is the font size
                               )
-        self.entry.place(anchor="w", relx=0.2, rely=0.6, relheight=0.1, relwidth=0.15)  # Input field
+        self.entry.place(anchor="n", relx=0.5,rely=0.6, relheight=0.1, relwidth=0.15)  # Input field
 
         self.click_anywhere()
         self.screen_index=3
@@ -149,7 +149,7 @@ class page_displayer:
 
                               font=(font_name,20),  # helvetica is the font, 60 is the font size
                               )
-        self.entry.place(anchor="w", relx=0.2, rely=0.6, relheight=0.1, relwidth=0.15)  # Input field
+        self.entry.place(anchor="n", relx=0.5,rely=0.6, relheight=0.1, relwidth=0.15)  # Input field
 
         self.click_anywhere()
         self.screen_index=4
@@ -164,7 +164,7 @@ class page_displayer:
 
                               font=(font_name,20),  # helvetica is the font, 60 is the font size
                               )
-        self.entry.place(anchor="w", relx=0.2, rely=0.6, relheight=0.1, relwidth=0.15)  # Input field
+        self.entry.place(anchor="n", relx=0.5,rely=0.6, relheight=0.1, relwidth=0.15)  # Input field
 
         self.click_anywhere()
         self.screen_index=5
@@ -181,7 +181,7 @@ class page_displayer:
         self.entry = tk.OptionMenu(None,self.q4info,"Lose Weight","Maintain Fitness","Gain Weight",
                               )
         self.entry.config(font=(font_name,20),background="orange",bd=0,highlightbackground="orange")
-        self.entry.place(anchor="w", relx=0.2, rely=0.6, relheight=0.1, relwidth=0.18)  # Input field
+        self.entry.place(anchor="n", relx=0.5,rely=0.6, relheight=0.1, relwidth=0.18)  # Input field
 
         self.click_anywhere()
         self.screen_index=6
@@ -198,7 +198,7 @@ class page_displayer:
 
                               )
         self.entry.config(font=(font_name,20),background="orange",bd=0,highlightbackground="orange")
-        self.entry.place(anchor="w", relx=0.2, rely=0.6, relheight=0.1, relwidth=0.18)  # Input field
+        self.entry.place(anchor="n", relx=0.5,rely=0.6, relheight=0.1, relwidth=0.18)  # Input field
 
         self.click_anywhere()
         self.screen_index=7
@@ -215,7 +215,7 @@ class page_displayer:
 
                                    )
         self.entry.config(font=(font_name, 20), background="orange", bd=0, highlightbackground="orange")
-        self.entry.place(anchor="w", relx=0.2, rely=0.6, relheight=0.1, relwidth=0.18)  # Input field
+        self.entry.place(anchor="n", relx=0.5,rely=0.6, relheight=0.1, relwidth=0.18)  # Input field
 
         self.click_anywhere()
         self.screen_index = 8
@@ -256,14 +256,9 @@ class page_displayer:
             except:
                 pass
 
-    def redifine_main(self,cfrom="#088BFE",cto="#058F06"):
-        self.clear_page()
-        self.clear_text()
-        self.main_frame.destroy()
-        self.main_frame = GradientFrame(self.root, from_color=cfrom, to_color=cto, height=1000)
-        return self.main_frame
+
     def welcome_screen(self,):
-        self.main_frame = GradientFrame(self.root, from_color="#000000", to_color="#E74C3C", height=1000)
+
         self.screen_index=1
         self.create_proper_text(0.5,0.5,"Welcome to Fit Finder","white",(font_name,25))
         self.create_proper_text(0.5,0.4,"Hello.","White",(font_name,25))
@@ -272,6 +267,5 @@ class page_displayer:
 
 from gradient import GradientFrame
 self=page_displayer()
-
-self.question2()
+self.welcome_screen()
 self.screen.mainloop()
