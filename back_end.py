@@ -21,9 +21,9 @@ def main():
     get_weight = float(input("Please enter your weight in pounds. "))
     body_mass_index = (get_weight * 703) / (get_height ** 2)
     if body_mass_index < 18.5:
-        print("A person with a BMI of " + str(body_mass_index ) + " is underwieght ")
+        return("A person with a BMI of " + str(body_mass_index ) + " is underwieght ")
     elif body_mass_index < 24.9:
-        print("A person with a BMI of " + str(body_mass_index ) + " is normal weight ")
+        return("A person with a BMI of " + str(body_mass_index ) + " is normal weight ")
     else:
-        print("A person with a BMI of " + str(body_mass_index ) + " is overweight ")
+        return("A person with a BMI of " + str(body_mass_index ) + " is overweight ")
 
